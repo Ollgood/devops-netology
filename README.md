@@ -11,3 +11,5 @@
 * все файлы, оканчивающиеся на _override.tf.json
 * .terraformrc
 * terraform.rc
+
+## Добавил новую строчку!
