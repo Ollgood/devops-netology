@@ -45,6 +45,21 @@ Nov 21 18:09:31 vagrant node_exporter[786]: ts=2021-11-21T18:09:31.045Z caller=n
 Nov 21 18:09:31 vagrant node_exporter[786]: ts=2021-11-21T18:09:31.045Z caller=node_exporter.go:199 level=info msg="Listening on" address=:9100
 Nov 21 18:09:31 vagrant node_exporter[786]: ts=2021-11-21T18:09:31.045Z caller=tls_config.go:195 level=info msg="TLS is disabled." http2=false
 ```
+
+unit-file:
+```buildoutcfg
+[Unit]
+Description=node exporter for Prometheus
+After=network-online.target
+
+[Service]
+User=root
+Group=root
+EnvironmentFile=-/etc/default/node_exporter
+ExecStart=/usr/sbin/node_exporter $EXTRA_OPTS
+[Install]
+WantedBy=multi-user.target
+```
 #### 2. Ознакомьтесь с опциями node_exporter и выводом `/metrics` по-умолчанию. Приведите несколько опций, которые вы бы выбрали для базового мониторинга хоста по CPU, памяти, диску и сети.
 node_load1 0
 node_load15 0
